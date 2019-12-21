@@ -1,0 +1,186 @@
+
+<ion-content class="ion-padding">
+   <ion-slides >
+     <ion-slide>
+       <div style="width: 100%;">
+      <ion-row size="12">
+        <div style="width: 100%;">
+          <h3 class="ion-text-wrap ion-text-center" style="color: white;">Select the trades you have experience in or want to learn</h3>
+        </div>
+        <ion-col size-md="4" size-xs="6" size-lg="6" size-xl="6" size-sm="4" *ngFor="let data of Trades"  (click)="saveTrades(data.id, data.name)"> 
+          <div [class]="changeColor" id="{{data.id}}"  >
+            <div class="ion-text-center">
+              <ion-label [color]="changeColor" id="{{data.id}}" class="ion-text-wrap">{{data.name}}</ion-label><br> <br>
+             <img src="https://api.haskyconnections.com/uploads/{{data.image}}" style="height: 60px;"/>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+     </ion-slide>
+     <ion-slide>
+       <div style="width: 100%;">
+        <ion-row size="12">
+            <div style="width: 100%;">
+              <h3 class="ion-text-wrap ion-text-center" style="color: white;">Select your speciality</h3>
+            </div>
+          </ion-row>
+          <ion-item color="dark">
+              <ion-label>Speciality</ion-label>
+              <ion-select  [(ngModel)]="idEspecialities">
+                <ion-select-option *ngFor="let user of filters" value="{{user.id}}">{{user.name}}</ion-select-option>
+              </ion-select>
+          </ion-item>
+          <ion-row size="12">
+              <div style="width: 100%;">
+                <h3 class="ion-text-wrap ion-text-center" style="color: white;">References are require to verify your experience</h3>
+              </div>
+              <ion-col size-md="4" size-xs="6" size-lg="6" size-xl="6" size-sm="4" *ngFor="let data of experience"  (click)="saveExperience(data.id, data.value)"> 
+                <ion-chip [class]="changeColor22" id={{data.name}} >
+                  <ion-label >{{data.name}}</ion-label>
+                </ion-chip>
+              </ion-col>
+            </ion-row>
+          </div>
+     </ion-slide>
+     <ion-slide>
+       <div style="width: 100%;">
+          <ion-row size="12">
+              <div style="width: 100%;">
+                <h3 class="ion-text-wrap ion-text-center" style="color: white;">What is your address?</h3>
+              </div>
+             
+            </ion-row>
+            <ion-button (click)="addAddres()"  expand="full" >Select your address</ion-button><br>
+            <ion-label color="light" class="ion-text-center">{{addres}}</ion-label>
+       </div>
+     </ion-slide>
+     <ion-slide>
+       <div style="width: 100%;">
+          <ion-row size="12">
+              <div style="width: 100%;">
+                <h3 class="ion-text-wrap ion-text-center" style="color: white;">What days are you available to work?</h3>
+
+              </div>
+              <ion-col size-md="4" size-xs="6" size-lg="6" size-xl="6" size-sm="4" *ngFor="let data of days"  > 
+                  <ion-item lines="none">      
+                        <input type="checkbox" id="{{data.name}}" [(ngModel)]="data.isChecked"/>
+                        <label for="{{data.name}}"> {{data.name}}</label>
+                    </ion-item>
+                </ion-col>
+
+            </ion-row>
+       </div>
+     </ion-slide>
+     <ion-slide>
+        <div style="width: 100%;">
+            <ion-row size="12">
+                <div style="width: 100%;">
+                  <h3 class="ion-text-wrap ion-text-center" style="color: white;">Which of the follow do you have?</h3>
+                </div>
+                <ion-col size-md="4" size-xs="6" size-lg="6" size-xl="6" size-sm="4" *ngFor="let data of tls"> 
+                    <ion-item lines="none">
+                        <input type="checkbox" id="{{data.description}}" [(ngModel)]="data.isChecked"/>
+                        <label for="{{data.description}}"> {{data.description}}</label>
+                    </ion-item>
+                  </ion-col>
+              </ion-row>
+        </div>
+     </ion-slide>
+     <ion-slide>
+      <div style="width: 100%;">
+          <ion-row size="12">
+              <div style="width: 100%;">
+                <h3 class="ion-text-wrap ion-text-center" style="color: white;">Select you primary means of transport</h3>
+  
+              </div>
+              <ion-col  > 
+                  <ion-radio-group style="width: 100%;" [(ngModel)]="transporte">
+                      <ion-item style="width: 100%;">
+                        <ion-label color="light">My own vehicle</ion-label>
+                        <ion-radio slot="start" color="success" value="My own vehicle"></ion-radio>
+                      </ion-item>
+            
+                      <ion-item>
+                        <ion-label color="light">Public transport</ion-label>
+                        <ion-radio slot="start" color="tertiary" value="Public transport" checked></ion-radio>
+                      </ion-item>
+
+                    </ion-radio-group>
+                </ion-col>
+              
+            </ion-row>
+      </div>
+     </ion-slide>
+   </ion-slides>
+</ion-content>
+<ion-footer no-border lines="no-line">
+    <ion-toolbar color="dark" no-border lines="no-line">
+        <ion-button
+        color="dark"
+        slot="start"
+        style="margin-right: 18px;"
+        (click)="slidePrev()"
+        *ngIf="noPage == 2 "
+      >
+       back
+      </ion-button>
+      
+      <div text-center style="width: 100%">{{noPage}}/6</div>
+      <ion-button
+        color="success"
+        slot="end"
+        style="margin-right: 18px;"
+        (click)="slideNext()"
+        *ngIf="noPage == 1 "
+      >
+       next
+      </ion-button>
+      <ion-button
+        color="success"
+        slot="end"
+        style="margin-right: 18px;"
+        (click)="slideTrades()"
+        *ngIf="noPage == 2"
+      >
+       next
+      </ion-button>
+      <ion-button
+        color="success"
+        slot="end"
+        style="margin-right: 18px;"
+        (click)="slideAddres()"
+        *ngIf="noPage == 3"
+      >
+       next
+      </ion-button>
+      <ion-button
+      color="success"
+      slot="end"
+      style="margin-right: 18px;"
+      (click)="slideDays()"
+      *ngIf="noPage == 4"
+    >
+     next
+    </ion-button>
+    <ion-button
+      color="success"
+      slot="end"
+      style="margin-right: 18px;"
+      (click)="slideTools()"
+      *ngIf="noPage == 5"
+    >
+     next
+    </ion-button>
+    <ion-button
+    color="success"
+    slot="end"
+    style="margin-right: 18px;"
+    (click)="save()"
+    *ngIf="noPage == 6"
+  >
+   save
+  </ion-button>
+      
+    </ion-toolbar>
+  </ion-footer>

@@ -1,0 +1,44 @@
+
+<ion-content>
+    <ion-segment (ionChange)="segmentChanged($event)" mode="md">
+        <ion-segment-button value="job" mode="md">
+          <ion-label color="light">works</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="activate" mode="md">
+          <ion-label color="light">pending works</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+      
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+  <div *ngIf="!data" class="animated fadeIn fast">
+    <div *ngFor="let i of viewJob">
+      <ion-card color="dark" (click)="detail(i.idRequest)" >
+        <ion-card-header>
+          <ion-card-title class="ion ion-text-capitalize">
+            {{i.nameProject}}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>{{i.addres}}</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+  <div *ngIf="data" class="animated fadeIn fast">
+    <div *ngFor="let i of viewJob">
+      <ion-card color="dark" (click)="detail(i.idRequest)" >
+        <ion-card-header>
+          <ion-card-title class="ion ion-text-capitalize">
+            <ion-skeleton-text animated style="width: 47px; height: 27px" ></ion-skeleton-text>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-skeleton-text animated  style="width: 50%;"></ion-skeleton-text>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+  
+</ion-content> 

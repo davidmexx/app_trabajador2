@@ -1,0 +1,53 @@
+<ion-menu side="start" menuId="first" contentId="main">
+  <ion-header no-border>
+    <ion-toolbar>
+      <div text-center>
+        <img
+          src="../../../assets/icon/handy6.png"
+          style="padding-top: 45px; padding-bottom: 45px;"
+          width="200"
+        />
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content no-border>
+    <ion-list lines="none">
+        <ion-item lines="none" (click)="home()">
+            <ion-label>
+              {{ language.home }}
+            </ion-label>
+            <ion-icon name="home" slot="start"></ion-icon>
+          </ion-item>
+      <ion-item lines="none" (click)="projects()">
+        <ion-label>
+          {{ language.projects }}
+        </ion-label>
+        <ion-icon name="hammer" slot="start"></ion-icon>
+      </ion-item>
+      <ion-item lines="none" (click)="notifications()">
+        <ion-label>
+          {{ language.notification }}
+        </ion-label>
+        <ion-icon name="notifications" slot="start"></ion-icon>
+      </ion-item>
+      <ion-item lines="none" (click)="profile()">
+        <ion-label>
+          {{ language.profile }}
+        </ion-label>
+        <ion-icon name="person" slot="start"></ion-icon>
+      </ion-item>
+      <ion-item lines="none" (click)="message()">
+        <ion-label>
+          {{ language.message }}
+        </ion-label>
+        <ion-icon name="chatbubbles" slot="start"></ion-icon>
+      </ion-item>
+      <ion-item lines="none" (click)="back()">
+          <ion-label>
+            {{ language.back }}
+          </ion-label>
+          <ion-icon name="power" slot="start"></ion-icon>
+        </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>

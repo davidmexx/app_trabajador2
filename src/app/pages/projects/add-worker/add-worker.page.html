@@ -1,0 +1,139 @@
+<app-header></app-header>
+
+<ion-content
+  ><br />
+  <div *ngIf="page1">
+    <ion-label padding color="light" class="ion-text-wrap"
+      >select the type of worker(s) you need</ion-label
+    >
+    <ion-row>
+      <ion-col size="6" size-sm="6" size-md="6" size-lg="4" size-xl="4">
+        <div class="page11">
+          <ion-label> icono</ion-label><br />
+          <ion-label>General Labour</ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="6" size-sm="6" size-md="6" size-lg="4" size-xl="4">
+        <div class="page11"></div>
+      </ion-col>
+      <ion-col size="6" size-sm="6" size-md="6" size-lg="4" size-xl="4">
+        <div class="page11"></div>
+      </ion-col>
+      <ion-col size="6" size-sm="6" size-md="6" size-lg="4" size-xl="4">
+        <div class="page11"></div>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div *ngIf="page2" fullscreen>
+    <div padding style="width: 100%">
+      <ion-label padding color="light" style="padding-left: 0px;"
+        >Select the experience level(s) for the worker(s) you need</ion-label
+      >
+    </div>
+    <ion-list no-border>
+      <ion-item lines="none">
+        <ion-label color="light">Minimun</ion-label>
+        <ion-select class="selector">
+          <ion-select-option value="cat" color="light" selected
+            >1 yr</ion-select-option
+          >
+          <ion-select-option value="cat" color="light">2 yr</ion-select-option>
+          <ion-select-option value="cat" color="light">5 yr</ion-select-option>
+          <ion-select-option value="cat" color="light"
+            >Journ Eyman</ion-select-option
+          >
+          <ion-select-option value="cat" color="light"
+            >Red Seal</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label color="light">Maximun</ion-label>
+        <ion-select class="selector">
+          <ion-select-option value="1" color="light">1 yr</ion-select-option>
+          <ion-select-option value="2" color="light">2 yr</ion-select-option>
+          <ion-select-option value="5" color="light">5 yr</ion-select-option>
+          <ion-select-option value="6" color="light"
+            >Journ Eyman</ion-select-option
+          >
+          <ion-select-option value="7" color="light" selected
+            >Red Seal</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div *ngIf="page3">
+    <ion-label padding color="light">how many workers do you need?</ion-label>
+    <div style="width: 100%;margin-left: 33%;margin-top: 50%;">
+      <ion-button> - </ion-button>
+      <ion-label style="font-size: 4em" color="light"> 1 </ion-label>
+      <ion-button> + </ion-button>
+      <br />
+    </div>
+    <div style="margin-top: 20%">
+      <ion-label class="ion-text-center"
+        >You are requesting workers that will have experience ranging from 2 yr
+        to red seal
+      </ion-label>
+    </div>
+  </div>
+  <div *ngIf="page4" fullscreen>
+    <div padding style="width: 100%">
+      <ion-label padding color="light" style="padding-left: 0px;"
+        >what are the taks the Framer(s) will be working on?</ion-label
+      >
+    </div>
+  </div>
+  <div *ngIf="page5">
+    <ion-label class="ion-text-center" color="light"
+      >what is the start date for the worker's</ion-label
+    >
+    <div *ngIf="dat">
+      <ion-button (click)="dates()">SELECT START DATE</ion-button>
+    </div>
+    <div *ngIf="date">
+      <label for="">asd</label>
+    </div>
+  </div>
+</ion-content>
+<ion-footer no-border lines="no-line">
+  <ion-toolbar color="dark" no-border lines="no-line">
+    <ion-button
+      slot="start"
+      color="dark"
+      style="margin-left: 20px;"
+      *ngIf="noPage == 1"
+    >
+      cancel
+    </ion-button>
+    <ion-button
+      (click)="backPage()"
+      slot="start"
+      color="dark"
+      style="margin-left: 20px;"
+      *ngIf="noPage != 1"
+    >
+      back
+    </ion-button>
+    <div text-center style="width: 100%">{{ noPage }}/10</div>
+    <ion-button
+      color="success"
+      slot="end"
+      style="margin-right: 18px;"
+      (click)="nextPage()"
+      *ngIf="noPage != 10"
+    >
+      next
+    </ion-button>
+    <ion-button
+      color="success"
+      slot="end"
+      style="margin-right: 18px;"
+      *ngIf="noPage == 10"
+      (click)="save()"
+    >
+      save
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

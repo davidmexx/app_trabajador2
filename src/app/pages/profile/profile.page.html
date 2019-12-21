@@ -1,0 +1,202 @@
+<ion-content>
+  <ion-card color="dark" mode="md">
+    <ion-card-content>
+      <ion-row size="12">
+        <ion-col size="6">
+          <ion-avatar
+            style="width: 110px !important; height: 110px !important;"
+          >
+            <img [src]="profile" />
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="6">
+          <h2 class="ion-text-wrap">{{firts}} {{last}}</h2>
+      <ionic4-star-rating #rating
+        activeIcon = "ios-star"
+        defaultIcon = "ios-star-outline"
+        activeColor = "#05b7d7"
+        defaultColor = "#aaaaaa"
+        readonly = "false"
+        rating = "{{va}}"
+        fontSize = "32px"
+        >
+    </ionic4-star-rating>
+
+          <ion-fab-button
+            color="light"
+            style="width: 35px; height: 35px;"
+            
+            (click)="modals(5)"
+          >
+            <ion-icon name="create" color="dark" mode="md"></ion-icon>
+          </ion-fab-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="dark" mode="ios" style="height: 100px;">
+    <ion-card-content>
+        <ion-list color="dark" style="background-color:#222428;">
+            <ion-list-header color="dark">
+              <ion-label>{{status}}</ion-label>
+            </ion-list-header>
+            <ion-progress-bar value="{{proggres}}"></ion-progress-bar>
+          </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="dark" mode="ios">
+    <ion-card-content>
+      <div class="">
+        <ion-item color="dark" lines="none">
+          <h2 slot="start" class="ion-text-wrap">Personal info</h2>
+          <ion-fab-button
+            color="light"
+            style="width: 35px; height: 35px;"
+            slot="end"
+            (click)="modals(1)"
+          >
+            <ion-icon name="create" color="dark" mode="md"></ion-icon>
+          </ion-fab-button>
+        </ion-item>
+      </div>
+      <ion-item color="dark" lines="none">
+        <ion-label>{{email}}</ion-label>
+      </ion-item>
+      <ion-item color="dark" lines="none">
+        <ion-label>{{phone}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="dark" mode="ios">
+    <ion-card-content>
+      <div class="">
+        <ion-item color="dark" lines="none">
+          <h2 slot="start" class="ion-text-wrap">Availability</h2>
+          <ion-fab-button
+            color="light"
+            style="width: 35px; height: 35px;"
+            slot="end"
+            (click)="modals(2)"
+          >
+            <ion-icon name="create" color="dark" mode="md"></ion-icon>
+          </ion-fab-button>
+        </ion-item>
+      </div>
+      <ion-row size="12">
+        <ion-col>
+          <ion-chip color="secondary" *ngFor="let data of days">
+            <ion-label color="light" class="ion-text-wrap">{{data}}</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="dark" mode="ios">
+    <ion-card-content>
+      <div class="">
+        <ion-item color="dark" lines="none">
+          <h2 slot="start" class="ion-text-wrap">Address</h2>
+          <ion-fab-button
+            color="light"
+            style="width: 35px; height: 35px;"
+            slot="end"
+            (click)="modals(7)"
+          >
+            <ion-icon name="create" color="dark" mode="md"></ion-icon>
+          </ion-fab-button>
+        </ion-item>
+      </div>
+      <ion-item color="dark" lines="none">
+        <ion-label>{{address}} </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="dark" mode="ios">
+    <ion-card-content>
+      <div class="">
+        <ion-item color="dark" lines="none">
+          <h2 slot="start" class="ion-text-wrap">How i travel to jobs</h2>
+          <ion-fab-button
+            color="light"
+            style="width: 35px; height: 35px;"
+            slot="end"
+            (click)="modals(3)"
+          >
+            <ion-icon name="create" color="dark" mode="md"></ion-icon>
+          </ion-fab-button>
+        </ion-item>
+      </div>
+      <ion-item color="dark" lines="none">
+        <ion-chip color="secondary">
+          <ion-label color="light" class="ion-text-wrap"
+            >{{transport}}</ion-label
+          >
+        </ion-chip>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="dark" mode="ios">
+    <ion-card-content>
+      <div class="">
+        <ion-item color="dark" lines="none">
+          <h2 slot="start" class="ion-text-wrap">My skills & experience</h2>
+          <ion-fab-button
+            color="light"
+            style="width: 35px; height: 35px;"
+            slot="end"
+            (click)="modals(4)"
+            >
+            <ion-icon name="create" color="dark" mode="md"></ion-icon>
+          </ion-fab-button>
+        </ion-item> 
+      </div>
+
+      <ion-item color="dark" lines="none" *ngFor="let data of trades">
+        <img
+          src="https://api.haskyconnections.com/uploads/{{data.image}}"
+          alt=""
+          style="width: 35px;"
+          slot="start"
+        />
+        <ion-label class="ion-text-wrap">{{data.name}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="dark" mode="ios">
+    <ion-card-content>
+      <div class="">
+        <ion-item color="dark" lines="none">
+          <h2 slot="start" class="ion-text-wrap">Tools</h2>
+          <ion-fab-button
+            color="light"
+            style="width: 35px; height: 35px;"
+            slot="end"
+            (click)="modals(8)">
+            <ion-icon name="create" color="dark" mode="md"></ion-icon>
+          </ion-fab-button>
+        </ion-item>
+      </div>
+      <ion-row size="12">
+        <ion-col>
+          <ion-chip color="secondary" *ngFor="let data of tools">
+            <ion-label color="light" class="ion-text-wrap"
+              >{{data.description}}</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="dark">
+    <ion-card-content>
+        <div class="ion-text-center ion-text-wrap">
+            <h2>Documents</h2>
+        </div>
+        <ion-item *ngFor="let data of document; let i = index" color="dark" >   
+          <ion-button slot="start" >Document - {{i+1}}</ion-button>
+          <ion-button slot="end" (click)="DownloadInpreview(data.document)">View Document</ion-button>
+        </ion-item>
+       
+            
+    </ion-card-content>
+</ion-card>
+</ion-content>

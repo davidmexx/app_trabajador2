@@ -1,0 +1,42 @@
+input[type="checkbox"] {
+    display: none;
+  }
+  
+  input[type="checkbox"] + label {
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    font-size: 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    background-color: #fff;
+    border:solid 2px #7d7d7d;
+    padding: 0.5rem 2rem;
+    display: inline-block;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  
+  input[type="checkbox"]:checked + label {
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    background-color: #05b7d7; color: white; border-color:#05b7d7;
+  }
+  
+  ion-app._gmaps_cdv_ .nav-decor{
+    background-color: transparent !important;
+  }
+  
+
+      #map {
+        height: 100%;
+        width: 300px;
+      }
+ 
+  .geolocation-btn{
+    margin: 0px;
+    padding: 0px;
+  }
+  

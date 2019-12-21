@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-toolbar color="primary">
+      <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Search for a place"></ion-searchbar>
+    </ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <input type="file" (change)="onFileSelected($event)"><br>
+  <br> <br> <br>
+  <button type="button" (click)="onUpload()">Upload</button>
+  <ion-button extend="full" (click)="modal()">ver modal</ion-button>
+  <p> ismael osuna</p>
+    <ion-item *ngFor="let data of datos">
+      <ion-checkbox type="checkbox" [(ngModel)]="data.selected"></ion-checkbox>
+    </ion-item>
+  
+    <ion-item *ngFor="let data of datos">
+      <input type="checkbox" id="{{data.name}}" [(ngModel)]="data.selected"/>
+      <label for="{{data.name}}"> One</label>
+    </ion-item>
+    <ion-list [hidden]="autocompleteItems.length == 0">
+      <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+        {{ item.description }}
+      </ion-item>
+    </ion-list>
+  
+    <div id='map'></div>
+</ion-content>
+<ion-footer >
+    <ion-row size="12">
+      <ion-col size="4">
+        <ion-item>
+          <ion-icon name="person" style="position: absolute;"></ion-icon>
+          <ion-label style="position: relative;">profile</ion-label>
+        </ion-item>
+        <button class="geolocation-btn" ion-button full (click)="tryGeolocation()"> Try Geolocation </button>
+        
+      </ion-col>
+    </ion-row>
+  </ion-footer>

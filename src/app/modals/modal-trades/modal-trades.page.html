@@ -1,0 +1,225 @@
+<ion-content>
+  <ion-card color="dark" *ngIf="page1" mode="md">
+      <ion-card-content>
+        <ion-row size="12"> 
+          <ion-col size="12">
+              <ion-item mode="md" color="dark" >
+                  <ion-label position="stacked" color="light"
+                    >First name<ion-text></ion-text
+                      > </ion-label>
+                 <ion-input color="light" [(ngModel)]="name"></ion-input>
+                </ion-item>
+          </ion-col>
+          <ion-col size="12">
+              <ion-item mode="md" color="dark" >
+                  <ion-label position="stacked" color="light"
+                    >Last Name<ion-text></ion-text
+                      > </ion-label>
+                 <ion-input color="light"  required [(ngModel)]="last" ></ion-input>
+              </ion-item>
+          </ion-col>
+          <ion-col size="12">
+              <ion-item mode="md" color="dark" >
+                  <ion-label position="stacked" color="light"
+                    >Email<ion-text></ion-text
+                      > </ion-label>
+                 <ion-input color="light"  required [(ngModel)]="email" readonly></ion-input>
+              </ion-item>
+          </ion-col>
+          <ion-col size="12">
+              <ion-item mode="md" color="dark" >
+                  <ion-label position="stacked" color="light"
+                    >Phone number<ion-text></ion-text
+                      > </ion-label>
+                 <ion-input color="light"  type="tel" required [(ngModel)]="phone" readonly></ion-input>
+              </ion-item>
+          </ion-col>
+    </ion-row>
+    <ion-row size="12">
+      <ion-col size="6">
+          <ion-button color="dark" (click)="salirS()" expand="block">back</ion-button>
+      </ion-col>
+      <ion-col size="6">
+          <ion-button (click)="saveProfile()" expand="block" >save</ion-button>
+      </ion-col>
+     <ion-col size="12">
+      <ion-button (click)="back()" expand="block" color="danger">Log out</ion-button>
+     </ion-col>
+    </ion-row>
+    </ion-card-content>
+    </ion-card>
+  <ion-card color="dark" *ngIf="page2" mode="md">
+      <ion-card-content>
+        <ion-row size="12" >
+          <ion-col size="6" *ngFor="let data of newDays"> 
+              <ion-item color="dark" lines="none">
+                  <ion-checkbox  id="{{data.name}}" [(ngModel)]="data.isChecked" mode="ios"> </ion-checkbox>
+                  <label for="{{data.name}}"> {{data.name}}</label>
+              </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row size="12">
+            <ion-col size="6">
+              <ion-button color="dark"  expand="block" (click)="salirS()">back</ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button expand="block" (click)="save()">save</ion-button>
+            </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+    <ion-card color="dark" *ngIf="page3" mode="md">
+        <ion-card-content>
+          <ion-row size="12">
+            <ion-col size="6" *ngFor="let data of newTrasnport"> 
+                <ion-item color="dark">
+                  <ion-checkbox  id="{{data.name}}" [(ngModel)]="data.isChecked" mode="ios"></ion-checkbox>
+                  <label for="{{data.name}}"> {{data.name}}</label>
+                </ion-item>
+              </ion-col>
+          </ion-row>
+          <ion-row size="12">
+              <ion-col size="6">
+                <ion-button color="dark" (click)="salirS()" expand="block">back</ion-button>
+              </ion-col>
+              <ion-col size="6">
+                <ion-button expand="block" (click)="saveTransport()">save</ion-button>
+              </ion-col>
+          </ion-row>
+         
+        </ion-card-content>
+      </ion-card>
+      <ion-card color="dark" *ngIf="page4" mode="md">
+        <ion-card-content>
+          <ion-row size="12">
+            <ion-col size="12" *ngFor="let data of tradesSelec" > 
+              <ion-item color="dark" >
+                <ion-checkbox mode="ios" id="{{data.id}}" [(ngModel)]="data.isChecked" (click)="saveTrades(data.isChecked,data.id, data.name, data.idEspeciality)" [disabled]="disabe"></ion-checkbox>
+                <label for="{{data.id}}" class="ion-text-wrap"> {{data.name}}</label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row size="12">
+              <ion-col size="6">
+                <ion-button color="dark" (click)="salirS()" expand="block">back</ion-button>
+              </ion-col>
+              <ion-col size="6">
+              </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+      <ion-card color="dark" *ngIf="page5" mode="md">
+        <ion-card-content>
+          <ion-row size="12">
+            <input type="file" accept="image/*" (change)="onFileSelected($event)">
+          </ion-row>
+          <ion-label style="color: red;" *ngIf="imagenTrue">{{image}}</ion-label>
+          <ion-row size="12"> 
+              <ion-col size="6">
+                <ion-button color="dark" (click)="salirS()" expand="block">back</ion-button>
+              </ion-col>
+              <ion-col size="6">
+                <ion-button expand="block" (click)="uploadPicture()">save</ion-button>
+              </ion-col>
+          </ion-row>
+        </ion-card-content>
+       <div>         
+        <ion-card color="dark" mode="md">
+        
+          <ion-card-content>
+              <ion-label>Add document</ion-label>
+            <ion-row size="12">
+              <input type="file"  (change)="onFileSelected($event)">
+            </ion-row>
+            <ion-row size="12"> 
+                <ion-col size="12">
+                  <ion-button expand="full" (click)="saveDocument()">save</ion-button>
+                </ion-col>
+            </ion-row>
+            <ion-label color="danger" *ngIf="document">Document is required</ion-label>
+          </ion-card-content>
+        </ion-card>
+
+       </div>
+         
+       
+      </ion-card>
+      <ion-card color="dark" *ngIf="page6" mode="md">
+        <ion-card-content>
+          <ion-row size="12">
+            <div style="width: 100%;">
+              <h3 class="ion-text-wrap ion-text-center" style="color: white;">select your speciality</h3>
+            </div>
+          </ion-row>
+          <ion-item color="dark">
+              <ion-label>Speciality</ion-label>
+              <ion-select  [(ngModel)]="idEspecialities" placeholder="select your speciality">
+                <ion-select-option *ngFor="let user of filters" value="{{user.id}}">{{user.name}}</ion-select-option>
+              </ion-select>
+          </ion-item>
+          <ion-row size="12">
+              <div style="width: 100%;"><br>
+                <h3 class="ion-text-wrap ion-text-center" style="color: white;">References are require to verify your experience</h3><br>
+              </div>
+              <ion-col size-md="4" size-xs="6" size-lg="6" size-xl="6" size-sm="4" *ngFor="let data of experience"  (click)="saveExperience(data.id, data.value)"> 
+                <ion-chip [class]="changeColor2" id={{data.id}} style="height: auto;">
+                  <ion-label class="ion-text-wrap">{{data.name}}</ion-label>
+                </ion-chip>
+              </ion-col>
+              <ion-col>
+                <ion-button expand="block" class="ion-text-wrap" (click)="selectMore()">Save
+                </ion-button>
+              </ion-col>
+            </ion-row>
+        </ion-card-content>
+      </ion-card>
+      <ion-card color="dark" *ngIf="page7" mode="md">
+          <ion-card-content>
+              <ion-searchbar color="light"  [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()"></ion-searchbar><br>
+              <ion-list [hidden]="autocompleteItems.length == 0" style="height: 200px;"> 
+                <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+                  <ion-label color="light"> {{ item.description }}</ion-label>
+                </ion-item>
+              </ion-list><br>
+              <div id="map" style=" height: 300px;" >sdkjasld</div>
+              <br>
+              <div class="ion-text-center">
+                <p>Distance <ion-chip style="background-color: #05b7d7; color: #fff;">{{km}} km</ion-chip> </p>
+              </div>
+              <ion-item color="dark" lines="none">
+              
+                <ion-range min="1" max="50" color="secondary" pin="true" mode="md" (ionChange)="dibujar($event)" [(ngModel)]="km">
+                  <ion-label slot="start">1 km</ion-label>
+                  <ion-label slot="end">50 km</ion-label>
+                </ion-range>
+              </ion-item>
+            
+             <ion-row size="12">
+                <ion-col size="6">
+                    <ion-button color="dark" (click)="salirS()" expand="block">back</ion-button>
+                  </ion-col>
+                  <ion-col size="6">
+                      <ion-button color="primary" (click)="saveTradesAdress()" expand="block">save</ion-button>
+                    </ion-col>
+             </ion-row>
+          </ion-card-content>
+      </ion-card>
+      <ion-card color="dark" *ngIf="page8" mode="md">
+        <ion-card-content>
+          <ion-row size="12">
+            <ion-col size="12" *ngFor="let data of toolSelec"> 
+                <ion-item color="dark" lines="none">
+                    <ion-checkbox id="{{data.name}}" [(ngModel)]="data.isChecked" (click)="saveToolsdb(data.isChecked, data.id)" mode="ios"></ion-checkbox>
+                    <label for="{{data.name}}" class="ion-text-wrap"> {{data.name}}</label>
+                </ion-item>
+              </ion-col>
+          </ion-row>
+          <ion-row size="12">
+              <ion-col size="6">
+                <ion-button color="dark"  expand="block" (click)="salirS()">back</ion-button>
+              </ion-col>
+             
+          </ion-row>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
